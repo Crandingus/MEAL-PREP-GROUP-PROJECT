@@ -250,7 +250,8 @@ def optimize(df, calories, protein, fat, group_mins):
                     df.loc[i, "Ingredient"],
                     qty,
                     cost,
-                    df.loc[i, "Food Group"]
+                    df.loc[i, "Food Group"],
+                    df.loc[i, "Unit"]
                 )
             )
 
@@ -452,17 +453,23 @@ class App:
         self.output.insert(
             tk.END,
             "MEAL PLAN\n"
-            "------------------------------\n"
+            "-----------------------------------------------------------|\n"
         )
-
+        self.output.insert(
+            tk.END,
+            "Ingredient        |Food Group   |Amount  |Unit Type |Cost  |\n"
+            "-----------------------------------------------------------|\n"
+        )
+        
         for name, qty, cost, grp in items:
             self.output.insert(
                 tk.END,
-                f"{name:<18} {grp:<13}: {qty} units   ${cost:.2f}\n"
+                f"{name:<18}|{grp:<13}|{qty} units |{unit:<10}|${cost:.2f} |\n""
             )
 
         self.output.insert(
             tk.END,
+            "-----------------------------------------------------------|\n"
             "\nNUTRITION TOTALS\n"
             "------------------------------\n"
         )
