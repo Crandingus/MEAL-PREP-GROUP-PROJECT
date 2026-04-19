@@ -335,25 +335,9 @@ class App:
             command=self.run
         ).pack(pady=10)
 
-# Frame to hold text + scrollbar
-output_frame = ttk.Frame(root)
-output_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
-# Scrollbar
-scrollbar = ttk.Scrollbar(output_frame)
-scrollbar.pack(side="right", fill="y")
-
-# Text widget
-self.output = tk.Text(
-    output_frame,
-    height=30,
-    width=90,
-    yscrollcommand=scrollbar.set
-)
-self.output.pack(side="left", fill="both", expand=True)
-
-# Link scrollbar to text
-scrollbar.config(command=self.output.yview)
+        self.output = tk.Text(root, height=30, width=90)
+        self.output.pack(padx=10, pady=10)
 
     def make_entry(self, label):
         ttk.Label(self.root, text=label).pack()
