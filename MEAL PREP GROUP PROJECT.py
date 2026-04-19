@@ -21,7 +21,7 @@ API_KEY = "YOUR_API_KEY_HERE"  # for price API (RapidAPI or Kroger)
 def load_data(filepath):
     df = pd.read_csv(filepath)
 
-    df['Avg. Price'] = df['Avg. Price'].replace('[\$,]', '', regex=True).astype(float)
+    df['Avg. Price'] = df['Avg. Price'].replace('[$,]', '', regex=True).astype(float)
     df['Ingredient'] = df['Ingredient'].str.replace(r'^\d+\.', '', regex=True).str.strip()
 
     return df
@@ -296,7 +296,7 @@ class App:
         self.root = root
         self.df = None
 
-        root.title("Meal Prep AI Optimizer")
+        root.title("Meal Prep Optimizer")
         root.geometry("760x700")
 
         ttk.Button(
@@ -458,7 +458,7 @@ class App:
         for name, qty, cost, grp in items:
             self.output.insert(
                 tk.END,
-                f"{name} ({grp}) : {qty} units   ${cost:.2f}\n"
+                f"{name:<18} {grp:<13}: {qty} units   ${cost:.2f}\n"
             )
 
         self.output.insert(
@@ -473,11 +473,11 @@ class App:
         )
         self.output.insert(
             tk.END,
-            f"Protein: {total_protein:.0f} g\n"
+            f"Protein: {total_protein:.0f}g\n"
         )
         self.output.insert(
             tk.END,
-            f"Fat: {total_fat:.0f} g\n"
+            f"Fat: {total_fat:.0f}g\n"
         )
 
 
