@@ -10,7 +10,7 @@ import pandas as pd  # data handling (tables / CSVs)
 import pulp  # linear programming / optimization solver
 import requests  # used for making API calls to fetch prices
 
-
+# API abandoned due to implementation issues
 
 # =========================
 # LOAD DATA
